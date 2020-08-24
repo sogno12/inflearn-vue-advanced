@@ -8,16 +8,11 @@ Vue.use(Vuex); //플러그형태로제공되므로
 
 export const store = new Vuex.Store({
     state: {
-        news: [],
-        ask: [],
-        jobs: [],
         user: {},
         item: {},
+        list: [],
     },
     getters: {
-        fetchedNews(state) {
-            return state.news;
-        },
         fetchedAsk(state) {
             return state.ask;
         },

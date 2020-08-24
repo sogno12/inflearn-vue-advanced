@@ -6,38 +6,21 @@
       <div class="user-description">
         <div>
           <slot name="username">
-          <!-- 상위 컴포넌ㅌ에서 정의할 영역-->
+          <!-- 상위 컴포넌트에서 정의할 영역-->
           {{ info.id }}
           </slot>
         </div>
-        <!-- <router-link :to="`/user/${userInfo.id}`">
-          {{ userInfo.id }}
-        </router-link> -->
         <div class="time">
           <slot name="time">{{ info.created }}</slot>
-        </div>
-        <div>
           <slot name="karma">{{ info.karma }}</slot>
         </div>
         
       </div>
-
-      <!-- <div>
-        <i class="fas fa-user"></i>
-      </div>
-      <div class="user-description">
-        <div>{{ userInfo.id }}</div>
-        <div class="time">
-        {{ userInfo.created }}
-        {{ userInfo.karma }}
-        </div>
-      </div> -->
     </div>
 </template>
 
 <script>
 export default {
-  //방법1
   props: {
     info : Object
   },

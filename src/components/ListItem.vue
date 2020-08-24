@@ -20,8 +20,6 @@
             </template>
         </p>
         <small class="link-text"> {{ item.time_ago }} by
-        <!-- 방법1: <router-link v-bind:to="'/user' + item.user">{{ item.user }}</router-link>  -->
-        <!-- 방법2: -->
           <router-link class="link-text" v-if="item.user" v-bind:to="`/user/${item.user}`">{{ item.user }}</router-link> 
           <a :href="item.url" v-else>{{ item.domain }}</a>
         </small>
@@ -34,36 +32,13 @@
 </template>
 
 <script>
-import { mapState, } from 'vuex'
 
 export default {
     computed: {
         listItems(){
-            const name = this.$route.name;
-            if( name === 'news'){
-               return this.$store.state.news;
-            }else if (name === 'ask') {
-                return this.$store.state.ask;
-            }else if (name === 'jobs'){
-                return this.$store.state.jobs;
-            }
+          return this.$store.state.list;
         },
-        ...mapState({
-        news: state => state.news
-        })
     },
-  created() {
-    // console.log(this.$route);
-    const name = this.$route.name;
-    if( name === 'news'){
-        this.$store.dispatch('FETCH_NEWS');
-    }else if (name === 'ask') {
-        this.$store.dispatch('FETCH_ASK');
-    }else if (name === 'jobs'){
-        this.$store.dispatch('FETCH_JOBS');
-    }
-
-  }
 }
 </script>
 
