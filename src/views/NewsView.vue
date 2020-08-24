@@ -1,25 +1,18 @@
 <template>
   <div>
-      <div v-for="user in news" v-bind:key="user.title">{{ user.title }}</div>
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import ListItem from '../components/ListItem.vue'
 
 export default {
-  computed: {
-    ...mapState({
-      news: state => state.news
-    })
-  },
-  created() {
-    // fetchNewsList()
-    //   .then(response => this.users = response.data)
-    //   .catch()
 
-    this.$store.dispatch('FETCH_NEWS');
+  components: {
+    ListItem,
   }
+
 }
 </script>
 

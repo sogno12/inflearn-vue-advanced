@@ -6,6 +6,7 @@ import JobsView from '../views/JobsView.vue';
 import ItemView from '../views/ItemView.vue';
 import UserView from '../views/UserView.vue';
 
+
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
@@ -18,24 +19,28 @@ export const router = new VueRouter({
         {
             // path : url 주소
             path: '/news',
+            name: 'news',
             // component : url 주소로 갔을 때 표시될 컴포넌트
             component: NewsView,
         },
         {
             path: '/jobs',
-            component: AskView,
-        },
-        {
-            path: '/ask',
+            name: 'jobs',
             component: JobsView,
         },
         {
-            path: '/item',
+            path: '/ask',
+            name: 'ask',
+            component: AskView,
+        },
+        {
+            path: '/item/:id',
             component: ItemView,
         },
         {
-            path: '/user',
+            path: '/user/:id',
             component: UserView,
-        }
+        },
+        
     ]
 })
