@@ -9,6 +9,7 @@ export default {
         fetchNewsList().then(response => {
             // console.log(response.data);
             context.commit("SET_NEWS", response.data);
+            return response;
         }).catch(error => {
             console.log(error);
         })
