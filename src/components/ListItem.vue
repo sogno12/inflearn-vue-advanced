@@ -3,7 +3,7 @@
   <ul class="news-list" v-for="item in listItems" v-bind:key="item.title">
     <li class="post">
       <div class="points">
-      {{ item.points || 0 }}
+        {{ item.points || 0 }}
       </div>
       <div>
         <!-- 타이틀 영역 -->
@@ -34,23 +34,13 @@
 </template>
 
 <script>
-import { mapState, } from 'vuex'
 
 export default {
     computed: {
-        listItems(){
-            const name = this.$route.name;
-            if( name === 'news'){
-               return this.$store.state.news;
-            }else if (name === 'ask') {
-                return this.$store.state.ask;
-            }else if (name === 'jobs'){
-                return this.$store.state.jobs;
-            }
-        },
-        ...mapState({
-        news: state => state.news
-        })
+      listItems() {
+        return this.$store.state.list;
+      }
+        
     },
 }
 </script>

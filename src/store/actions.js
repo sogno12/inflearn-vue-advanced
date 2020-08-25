@@ -2,7 +2,8 @@ import { fetchNewsList,
         fetchAskList,
         fetchJobsList,
         fetchUserInfo,
-        fetchItemInfo } from "../api/index.js";
+        fetchItemInfo,
+        fetchList } from "../api/index.js";
 
 export default {
     FETCH_NEWS(context) {
@@ -46,5 +47,11 @@ export default {
         .catch(error => {
             console.log(error);
         })
+    },
+    FETCH_LIST(context, pageName) {
+        fetchList(pageName)
+            .then((response) => context.commit('SET_LIST', response.data))
+            .catch(error => console.log(error));
+
     }
 }
