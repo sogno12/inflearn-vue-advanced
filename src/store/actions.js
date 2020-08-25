@@ -7,16 +7,15 @@ import { fetchNewsList,
 
 export default {
     FETCH_NEWS(context) {
-        fetchNewsList().then(response => {
+       return fetchNewsList().then(response => {
             // console.log(response.data);
             context.commit("SET_NEWS", response.data);
-            return response;
         }).catch(error => {
             console.log(error);
         })
     },
     FETCH_ASK(context){
-        fetchAskList()
+        return fetchAskList()
         .then(response => {
             context.commit("SET_ASK", response.data)
         }).catch(error => {
@@ -24,14 +23,14 @@ export default {
         })
     },
     FETCH_JOBS(context){
-        fetchJobsList().then(response => {
+        return fetchJobsList().then(response => {
             context.commit("SET_JOBS", response.data)
         }).catch(error => {
             console.log(error);
         })
     },
     FETCH_USER(context, userName){
-        fetchUserInfo(userName)
+        return fetchUserInfo(userName)
         .then((response) => {
             context.commit('SET_USER', response.data);
         })
@@ -40,7 +39,7 @@ export default {
         });
     },
     FETCH_ITEM(context, itemId){
-        fetchItemInfo(itemId)
+        return fetchItemInfo(itemId)
         .then((response)=>{
             context.commit('SET_ITEM', response.data);
         })
@@ -48,9 +47,16 @@ export default {
             console.log(error);
         })
     },
+
+    // 실행순서 #2.
     FETCH_LIST(context, pageName) {
-        fetchList(pageName)
-            .then((response) => context.commit('SET_LIST', response.data))
+        // 실행순서 #3.
+        return fetchList(pageName)
+            .then(response => {
+                // 실행순서 #4.
+                console.log('4. fetched');
+                context.commit('SET_LIST', response.data)
+            })
             .catch(error => console.log(error));
 
     }

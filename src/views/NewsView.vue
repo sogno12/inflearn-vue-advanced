@@ -6,7 +6,7 @@
 
 <script>
 import ListItem from '../components/ListItem.vue'
-import ListMixin from '../mixins/ListMixin';
+// import ListMixin from '../mixins/ListMixin';
 
 export default {
 
@@ -14,7 +14,7 @@ export default {
     ListItem,
   },
 
-  mixins: [ListMixin],
+  // mixins: [ListMixin],
 
   // created() {
   //   bus.$emit('start:spinner');
